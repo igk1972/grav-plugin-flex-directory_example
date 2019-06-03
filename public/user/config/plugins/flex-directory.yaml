@@ -1,1 +1,2 @@
 directories: user://blueprints/flex-directory
+extra_site_twig_path: user://templates
