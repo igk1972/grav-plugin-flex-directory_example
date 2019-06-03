@@ -15,3 +15,6 @@ tmp/**
 
 !/public/user/directories/
 !/public/user/directories/**
+
+!/public/user/templates/
+!/public/user/templates/**
