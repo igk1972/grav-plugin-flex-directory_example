@@ -1,0 +1,113 @@
+title: Events (in russian) example
+description: ''
+priority: 555
+config:
+  admin:
+    list:
+      edit: title
+      fields:
+        published:
+          align: center
+          width: 6
+        date:
+          width: 8
+          sort: 1
+          order: 1
+        title:
+          link: edit
+        tags: {}
+  data:
+    storage:
+      type: folder
+      file: 'user://directories/event/%s/event.md'
+      key: date
+form:
+  validation: loose
+  fields:
+    tabs:
+      type: tabs
+      activate: 1
+      fields:
+        tabcommon:
+          title: Основное
+          type: tab
+          fields:
+            columns_date:
+              type: columns
+              fields:
+                column_date:
+                  type: column
+                  fields:
+                    date:
+                      label: Дата
+                      type: date
+                      validate:
+                        required: true
+                      style: vertical
+                      autofocus: true
+            tags:
+              label: Поселок / Земля / Объект
+              type: selectize
+              validate:
+                required: false
+              style: vertical
+            title:
+              label: Звголовок (устареет)
+              type: text
+              style: vertical
+            markdown:
+              label: Текст
+              type: editor
+              validate:
+                required: true
+              size: large
+              style: vertical
+        tabmedia:
+          title: Медиа
+          type: tab
+          fields:
+            image.main:
+              label: Изображение (главное)
+              type: pagemediaselect
+              style: vertical
+            media_order:
+              label: PLUGIN_ADMIN.PAGE_MEDIA
+              type: pagemedia
+        taboption:
+          title: Опции
+          type: tab
+          fields:
+            columns_published:
+              type: columns
+              fields:
+                column_published:
+                  type: column
+                  fields:
+                    published:
+                      label: Показ на сайте
+                      type: toggle
+                      highlight: 1
+                      options:
+                        '0': PLUGIN_ADMIN.NO
+                        '1': PLUGIN_ADMIN.YES
+                      validate:
+                        type: bool
+                        min: 1
+                      default: 1
+                      style: vertical
+        tabseo:
+          title: Поисковики
+          type: tab
+          fields:
+            meta.title:
+              label: Заголовок (title)
+              type: text
+              style: vertical
+            meta.keywords:
+              label: Ключевые слова (keywords)
+              type: text
+              style: vertical
+            meta.description:
+              label: Описание (description)
+              type: text
+              style: vertical
