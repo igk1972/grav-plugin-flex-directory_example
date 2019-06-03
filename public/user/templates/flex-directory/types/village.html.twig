@@ -1,0 +1,38 @@
+{% set directory = grav.flex_directory.directory(type) %}
+{% set collection = directory.collection %}
+
+<div id="flex-directory">
+    <div class="text-center">
+        <input class="form-input search" type="text" placeholder="Search by title, etc" />
+        <button class="button button-primary sort asc" data-sort="title">
+            Sort by Title
+        </button>
+    </div>
+    <ul class="list">
+        {% for entry in collection %}
+            {% if entry.published %}
+            <li style="padding: 0 0.5rem;">
+                <div class="entry-details">
+                    <h3><span class="title">{{ entry.title }}</span></h3>
+                </div>
+                {% set url = entry.media.images | first.cropResize(200, 200).url %}
+                <div style="background: url({{ url }}) no-repeat center; background-size: cover; min-height: 200px;">
+                </div>
+                <hr>
+                 <div class="entry-extra">
+                    {% for tag in entry.tags|split(',') %}
+                        <span>{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+<script>
+    var options = {
+        valueNames: [ 'title' ]
+    };
+    var userList = new List('flex-directory', options);
+</script>
