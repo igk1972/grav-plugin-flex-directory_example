@@ -1,0 +1,44 @@
+title: Village (in russian) example
+description: ''
+priority: 999
+extends@:
+  - type: page
+    context: 'blueprints://pages'
+config:
+  admin:
+    list:
+      edit: title
+      fields:
+        published:
+          align: center
+        slug: {}
+        title:
+          link: edit
+          sort: 1
+          order: 0
+        title_short: {}
+        soldout:
+          align: center
+        price.min:
+          align: right
+        tags: {}
+        youtube_playlist: {}
+        title_list1: {}
+        title_list2: {}
+        meta.title: {}
+        meta.keywords: {}
+  data:
+    storage:
+      type: folder
+      file: 'user://directories/village/%s/location.md'
+      key: slug
+form:
+  validation: loose
+  fields:
+    tabs:
+      type: tabs
+      activate: 1
+      fields:
+        tabpieces:
+          title: Участки
+          type: tab
